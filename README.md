@@ -105,6 +105,8 @@ Default user: root
 
 Password: password **CHANGE AFTER FIRST LOGIN**
 
+**NOTE:** To revert to the stock firmware just upgrade the firmware in the gargoyle interface with a stock firmware image.
+
 ## 📚 Resources
 
 [Gargoyle Official Site](https://www.gargoyle-router.com/)
