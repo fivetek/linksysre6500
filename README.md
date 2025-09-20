@@ -33,7 +33,7 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
 
 ---
 
-## 🔌 Step 1: Connect to RE6500 via UART
+## 🔌 Step 1: Connect to RE6500 via UART and to a TFTP
 
 1. Open the RE6500 case and locate the **UART header**.  
    - TX, RX, GND pins (3.3V logic).  
@@ -43,8 +43,26 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
    - **RX → TX ()**  
    - ⚠️ **Do not connect VCC (3.3V) (Pin 4)**.
 - Board Header pins (The header pins don't come soldered to the board you have to solder them by yourself)
+
 ![alt text](https://github.com/fivetek/linksysre6500/blob/main/img/board_headerpins.jpeg)
 
-3. Start serial terminal at `57600 baud, 8N1`.
+3. Start serial terminal at 57600 baud, 8N1. Set the environment variables in serial console.
+
+  `screen /dev/ttyUSB0 57600`
+
+  Boot without reset held down. Watch the console for U-Boot, and in particular, this line: *relocate_code Pointer at: 83f20000*
+
+  Now press and hold reset, and type *1234567890 RET 4 RET*
+
+  Set the environment variables in the serial terminal:
+
+  `setenv ipaddr 192.168.1.1`
+
+  `setenv serverip 192.168.1.2`
 
 ---
+
+## 🌐 Step 2: Configure TFTP Server
+
+1. Set your PC IP to `192.168.1.2`.  
+2. Place the Gargoyle **initramfs image** in your TFTP root directory.
