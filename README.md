@@ -70,7 +70,11 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
 
 ```bash
 setenv ipaddr 192.168.1.1
+```
+```bash
 setenv serverip 192.168.1.2
+```
+```bash
 saveenv
 ```
 
