@@ -48,21 +48,30 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
 
 3. Start serial terminal at 57600 baud, 8N1. Set the environment variables in serial console.
 
-  `screen /dev/ttyUSB0 57600`
-
-  Boot without reset held down. Watch the console for U-Boot, and in particular, this line: *relocate_code Pointer at: 83f20000*
-
-  Now press and hold reset, and type *1234567890 RET 4 RET*
-
-  Set the environment variables in the serial terminal:
-
-  `setenv ipaddr 192.168.1.1`
-
-  `setenv serverip 192.168.1.2`
+ ```bash
+ screen /dev/ttyUSB0 57600
+```
 
 ---
 
 ## 🌐 Step 2: Configure TFTP Server
 
 1. Set your PC IP to `192.168.1.2`.  
-2. Place the Gargoyle **initramfs image** in your TFTP root directory.
+2. Place the Gargoyle **initramfs image** in your TFTP root directory. gargoyle_1.14.0-ramips-mt7621-linksys_re6500-initramfs-kernel.bin
+
+---
+
+## 🖥️ Step 3: Boot RE6500 into U-Boot
+
+1. Power on the RE6500, Boot without reset held down.
+2. Watch the console for U-Boot, and in particular, this line: *relocate_code Pointer at: 83f20000*
+3. Now press and hold reset, and type *1234567890 RET 4 RET*
+4. Set the environment variables in the serial terminal:
+
+```bash
+setenv ipaddr 192.168.1.1
+setenv serverip 192.168.1.2
+saveenv
+```
+
+## 📥 Step 4: Load and Boot Gargoyle (RAM)
