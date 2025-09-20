@@ -42,7 +42,7 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
    - **TX → RX**  
    - **RX → TX**  
    - ⚠️ **Do not connect VCC (3.3V)**.
-
+![alt text](https://github.com/fivetek/linksysre6500/blob/main/img/board_headerpins.jpeg)
 
 3. Start serial terminal at `57600 baud, 8N1`.
 
