@@ -38,10 +38,11 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
 1. Open the RE6500 case and locate the **UART header**.  
    - TX, RX, GND pins (3.3V logic).  
 2. Connect your USB-UART adapter:  
-   - **GND → GND**  
-   - **TX → RX**  
-   - **RX → TX**  
-   - ⚠️ **Do not connect VCC (3.3V)**.
+   - **GND → GND (Pin )**
+   - **TX → RX ()**  
+   - **RX → TX ()**  
+   - ⚠️ **Do not connect VCC (3.3V) (Pin 4)**.
+- Board Header pins (The header pins don't come soldered to the board you have to solder them by yourself)
 ![alt text](https://github.com/fivetek/linksysre6500/blob/main/img/board_headerpins.jpeg)
 
 3. Start serial terminal at `57600 baud, 8N1`.
