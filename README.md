@@ -38,9 +38,9 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
 1. Open the RE6500 case and locate the **UART header**.  
    - TX, RX, GND pins (3.3V logic).  
 2. Connect your USB-UART adapter:  
-   - **GND → GND (Pin )**
-   - **TX → RX ()**  
-   - **RX → TX ()**  
+   - **GND → GND (PIN 3)**
+   - **TX → RX (PIN 1)**  
+   - **RX → TX (PIN 2)**  
    - ⚠️ **Do not connect VCC (3.3V) (Pin 4)**.
 - Board Header pins (The header pins don't come soldered to the board you have to solder them by yourself)
 
@@ -57,7 +57,7 @@ Gargoyle is based on [OpenWrt](https://openwrt.org/), with a user-friendly web i
 ## 🌐 Step 2: Configure TFTP Server
 
 1. Set your PC IP to `192.168.1.2`.  
-2. Place the Gargoyle **initramfs image** in your TFTP root directory. gargoyle_1.14.0-ramips-mt7621-linksys_re6500-initramfs-kernel.bin
+2. Place the Gargoyle **initramfs image** in your TFTP root directory.
 
 ---
 
@@ -75,3 +75,34 @@ saveenv
 ```
 
 ## 📥 Step 4: Load and Boot Gargoyle (RAM)
+
+```bash
+tftpboot 0x81000000 gargoyle_1.14.0-ramips-mt7621-linksys_re6500-initramfs-kernel.bin
+```
+
+```bash
+bootm 0x81000000
+```
+The device will boot Gargoyle from RAM (not yet written to flash).
+
+## 💾 Step 5: Flash Gargoyle Permanently
+
+1. Access the Gargoyle web interface at: http://192.168.1.1
+2. Navigate to System → Firmware Upgrade.
+3. Upload the sysupgrade image.
+4. Select "Do not keep settings".
+5. Start upgrade and wait for the RE6500 to reboot.
+
+## ✅ Step 6: First Login
+
+Default IP: 192.168.1.1
+
+Default user: root
+
+Password: password **CHANGE AFTER FIRST LOGIN**
+
+## 📚 Resources
+
+[Gargoyle Official Site](https://www.gargoyle-router.com/)
+
+[OpenWrt Wiki – Linksys RE6500](https://openwrt.org/toh/linksys/re6500)
